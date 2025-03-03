@@ -16,8 +16,8 @@ jobs:
       - name: Move files from groupproject to root
         run: |
           mkdir temp
-          cp -r groupproject/* temp/
-          rm -rf groupproject
+          cp -r GroupProject/* temp/
+          rm -rf GroupProject
           mv temp/* ./
 
       - name: Setup Pages
