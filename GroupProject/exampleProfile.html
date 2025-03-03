@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<head>
+  <link rel="stylesheet" type = "text/css" href="styles.css">
+  <title>My Profile</title>
+</head>
+<body>
+
+  <div id="navbar">
+   <a href="index.html">HOME</a>
+   <a class="center"> MY PROFILE </a>
+   <a href="index.html" class="split">LOG OUT</a>
+  </div>
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+<div id="slideshow1" class="slideshow">
+
+  <!--images-->
+  <div class="Slides fade">
+    <img src="Images/Torin/Top1.jpeg" class="imgs" alt="Top1">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Top2.jpeg" class="imgs" alt="Top2">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Top3.jpeg" class="imgs" alt="Top3">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="changeSlides(-1, slideshow1)">&#10094;</a>
+  <a class="next" onclick="changeSlides(1, slideshow1)">&#10095;</a>
+</div>
+
+
+<div id="slideshow2" class="slideshow">
+
+  <!--images-->
+  <div class="Slides fade">
+    <img src="Images/Torin/Bottom1.jpeg" class="imgs" alt="Bottom1">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Bottom2.jpeg" class="imgs" alt="Bottom2">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Bottom3.jpeg" class="imgs" alt="Bottom3">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="changeSlides(-1, slideshow2)">&#10094;</a>
+  <a class="next" onclick="changeSlides(1, slideshow2)">&#10095;</a>
+</div>
+
+
+<div id="slideshow3" class="slideshow">
+
+  <!--images-->
+  <div class="Slides fade">
+    <img src="Images/Torin/Shoe1.jpeg" class="imgs" alt="Shoe1">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Shoe2.jpeg" class="imgs" alt="Shoe2">
+  </div>
+
+  <div class="Slides fade">
+    <img src="Images/Torin/Shoe3.jpeg" class="imgs" alt="Shoe3">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="changeSlides(-1, slideshow3)">&#10094;</a>
+  <a class="next" onclick="changeSlides(1, slideshow3)">&#10095;</a>
+</div>
+</div>
+<br>
+
+<h2>
+  Select closet(s):
+
+<label class="container2">SPRING
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container2">SUMMER
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container2">FALL
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container2">WINTER
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+</h2>
+
+<button id = "randombtn" onclick="Randomize()">Randomize!</button>
+<script src="Scripts.js"></script>
+
+<br><br>
+</body>
+</html>
