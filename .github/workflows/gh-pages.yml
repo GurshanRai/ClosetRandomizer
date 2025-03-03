@@ -13,14 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Move files from groupproject to root
+      - name: Debug: List files
+        run: ls -R
+
+      - name: Move files from GroupProject to root
         run: |
           mkdir temp
           cp -r GroupProject/* temp/
           rm -rf GroupProject
           mv temp/* ./
 
-      - name: Setup Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./ # Publish everything in the root directory
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
