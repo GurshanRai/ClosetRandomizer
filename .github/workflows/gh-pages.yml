@@ -13,15 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Debug: List files
+      - name: Debug:List files
         run: ls -R
 
       - name: Move files from GroupProject to root
         run: |
           mkdir temp
-          cp -r GroupProject/* temp/
-          rm -rf GroupProject
-          mv temp/* ./
+          if [ -d "GroupProject" ]; then
+            cp -r GroupProject/* temp/
+            rm -rf GroupProject
+            mv temp/* ./
+          else
+            echo "Error: GroupProject directory not found"
+            exit 1
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
