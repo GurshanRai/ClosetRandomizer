@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Move files from groupproject to root
+        run: |
+          mkdir temp
+          cp -r groupproject/* temp/
+          rm -rf groupproject
+          mv temp/* ./
+
+      - name: Setup Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./ # Publish everything in the root directory
