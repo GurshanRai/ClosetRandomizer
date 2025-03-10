@@ -34,49 +34,65 @@
   </p>
 
 <script>
-let autoRotate = true;
+let maxRotations = 3;
+let rotations1 = 0;
+let rotations2 = 0;
+let rotations3 = 0;
 let interval1, interval2, interval3;
 
-// Function to auto rotate the slides
+// Function to auto-rotate the slides exactly 3 times
 function autoRotateSlides() {
-  interval1 = setInterval(() => changeSlides(1, slideshow1), 3000);
-  interval2 = setInterval(() => changeSlides(1, slideshow2), 3000);
-  interval3 = setInterval(() => changeSlides(1, slideshow3), 3000);
+  interval1 = setInterval(() => {
+    changeSlides(1, slideshow1);
+    rotations1++;
+    if (rotations1 >= maxRotations * slideshow1.children.length) {
+      clearInterval(interval1);
+    }
+  }, 3000);
+
+  interval2 = setInterval(() => {
+    changeSlides(1, slideshow2);
+    rotations2++;
+    if (rotations2 >= maxRotations * slideshow2.children.length) {
+      clearInterval(interval2);
+    }
+  }, 3000);
+
+  interval3 = setInterval(() => {
+    changeSlides(1, slideshow3);
+    rotations3++;
+    if (rotations3 >= maxRotations * slideshow3.children.length) {
+      clearInterval(interval3);
+    }
+  }, 3000);
 }
 
-// Start auto rotating when the page loads
+// Start auto-rotating when the page loads
 window.onload = function() {
   autoRotateSlides();
 };
 
-// Stop auto rotating when Randomize is clicked
-function Randomize() {
-  if (autoRotate) {
-    clearInterval(interval1);
-    clearInterval(interval2);
-    clearInterval(interval3);
-    autoRotate = false;
-    console.log("Auto-rotation stopped.");
+// Function to manually change slides (still works with buttons)
+function changeSlides(n, slideshow) {
+  let slides = slideshow.getElementsByClassName("Slides");
+  let currentIndex = -1;
+  
+  // Find the current visible slide
+  for (let i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      currentIndex = i;
+      break;
+    }
   }
-  
-  // Randomize function logic (optional)
-  const slides1 = document.querySelectorAll('#slideshow1 .Slides');
-  const slides2 = document.querySelectorAll('#slideshow2 .Slides');
-  const slides3 = document.querySelectorAll('#slideshow3 .Slides');
-  
-  let randomIndex1 = Math.floor(Math.random() * slides1.length);
-  let randomIndex2 = Math.floor(Math.random() * slides2.length);
-  let randomIndex3 = Math.floor(Math.random() * slides3.length);
 
-  showSlide(slides1, randomIndex1);
-  showSlide(slides2, randomIndex2);
-  showSlide(slides3, randomIndex3);
-}
+  // Hide current slide
+  if (currentIndex !== -1) {
+    slides[currentIndex].style.display = "none";
+  }
 
-// Helper function to show a specific slide
-function showSlide(slides, index) {
-  slides.forEach(slide => slide.style.display = 'none');
-  slides[index].style.display = 'block';
+  // Show the next slide
+  let newIndex = (currentIndex + n + slides.length) % slides.length;
+  slides[newIndex].style.display = "block";
 }
 
 // Handle modal close
