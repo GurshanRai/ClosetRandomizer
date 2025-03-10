@@ -33,6 +33,38 @@
     Helping you create outfits like you've never seen before
   </p>
 
+<script>
+let autoRotate = true;
+let interval1, interval2, interval3;
+
+// Function to auto rotate the slides
+function autoRotateSlides() {
+  interval1 = setInterval(() => changeSlides(1, slideshow1), 3000);
+  interval2 = setInterval(() => changeSlides(1, slideshow2), 3000);
+  interval3 = setInterval(() => changeSlides(1, slideshow3), 3000);
+}
+
+// Start auto rotating when the page loads
+window.onload = function() {
+  autoRotateSlides();
+};
+
+// Stop auto rotating when Randomize is clicked
+function Randomize() {
+  clearInterval(interval1);
+  clearInterval(interval2);
+  clearInterval(interval3);
+  autoRotate = false;
+}
+
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 
 <!-- Slideshow container -->
 <div class="slideshow-container">
