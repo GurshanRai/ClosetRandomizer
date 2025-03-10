@@ -39,9 +39,11 @@ let interval1, interval2, interval3;
 
 // Function to auto rotate the slides
 function autoRotateSlides() {
+  while (autoRotate == true){
   interval1 = setInterval(() => changeSlides(1, slideshow1), 3000);
   interval2 = setInterval(() => changeSlides(1, slideshow2), 3000);
   interval3 = setInterval(() => changeSlides(1, slideshow3), 3000);
+  }
 }
 
 // Start auto rotating when the page loads
