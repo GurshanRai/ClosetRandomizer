@@ -39,11 +39,9 @@ let interval1, interval2, interval3;
 
 // Function to auto rotate the slides
 function autoRotateSlides() {
-  while (autoRotate == true){
   interval1 = setInterval(() => changeSlides(1, slideshow1), 3000);
   interval2 = setInterval(() => changeSlides(1, slideshow2), 3000);
   interval3 = setInterval(() => changeSlides(1, slideshow3), 3000);
-  }
 }
 
 // Start auto rotating when the page loads
@@ -53,12 +51,35 @@ window.onload = function() {
 
 // Stop auto rotating when Randomize is clicked
 function Randomize() {
-  clearInterval(interval1);
-  clearInterval(interval2);
-  clearInterval(interval3);
-  autoRotate = false;
+  if (autoRotate) {
+    clearInterval(interval1);
+    clearInterval(interval2);
+    clearInterval(interval3);
+    autoRotate = false;
+    console.log("Auto-rotation stopped.");
+  }
+  
+  // Randomize function logic (optional)
+  const slides1 = document.querySelectorAll('#slideshow1 .Slides');
+  const slides2 = document.querySelectorAll('#slideshow2 .Slides');
+  const slides3 = document.querySelectorAll('#slideshow3 .Slides');
+  
+  let randomIndex1 = Math.floor(Math.random() * slides1.length);
+  let randomIndex2 = Math.floor(Math.random() * slides2.length);
+  let randomIndex3 = Math.floor(Math.random() * slides3.length);
+
+  showSlide(slides1, randomIndex1);
+  showSlide(slides2, randomIndex2);
+  showSlide(slides3, randomIndex3);
 }
 
+// Helper function to show a specific slide
+function showSlide(slides, index) {
+  slides.forEach(slide => slide.style.display = 'none');
+  slides[index].style.display = 'block';
+}
+
+// Handle modal close
 var modal = document.getElementById('id01');
 window.onclick = function(event) {
   if (event.target == modal) {
