@@ -166,10 +166,10 @@
       </label>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="submit" class="loginbtn">Login</button>
+    <div class="container" style="background-color:#f1f1f1; display: flex; justify-content: space-between;">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
+      <button type="submit" class="loginbtn" style="margin-left: auto;">Login</button>
+    </div>    
   </form>
 </div>
 
@@ -178,22 +178,39 @@ function loginUser() {
   var username = document.getElementById('uname').value;
   var password = document.getElementById('psw').value;
 
-  // Simple username/password check
-  if (username === 'user' && password === 'password') {
-    window.location.href = 'exampleProfile.html';
-    return false; // Prevent actual form submission
-  } else {
-    alert('Invalid username or password');
-    return false;
-  }
-}
+  // Fetch the user.txt file to check for credentials
+  fetch('users.txt')
+    .then(response => response.text())
+    .then(data => {
+      // Split the file by lines
+      var lines = data.split('\n');
 
-// Close modal when user clicks outside of it
-window.onclick = function(event) {
-  var modal = document.getElementById('id01');
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+      // Check each line for a valid username/password
+      for (var i = 0; i < lines.length; i++) {
+        var parts = lines[i].split(',');
+
+        // Extract username, password, and profile URL
+        var fileUser = parts[0].trim();
+        var filePass = parts[1].trim();
+        var profilePage = parts[2].trim();
+
+        // Compare the input with the file
+        if (username === fileUser && password === filePass) {
+          window.location.href = profilePage;
+          return false; // Prevent form submission
+        }
+      }
+
+      // If no match is found, show error
+      alert('Invalid username or password');
+      return false;
+    })
+    .catch(err => {
+      console.error('Failed to read users.txt', err);
+      alert('Invalid username or password');
+    });
+
+  return false; // Prevent form submission
 }
 </script>
 </body>
