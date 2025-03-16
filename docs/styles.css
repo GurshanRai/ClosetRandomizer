@@ -24,24 +24,23 @@
 }
 
 .sidebar.left {
-  left: -50px; /* Corrected */
+  left: -50px; 
 }
 
 .sidebar.right {
-  right: -50px; /* Ensuring proper positioning */
+  right: -50px; 
 }
 
 /* Ensuring sidebar images are properly sized */
 .sidebar img {
-  width: 100%; /* Adjust width to fit sidebar */
+  width: 100%; 
   height: auto;
   margin-bottom: 10px;
   position: relative;
 }
 
-/* Adjusting main content to not overlap with sidebars */
 .main-content {
-  margin-left: 170px; /* Adjust based on sidebar width */
+  margin-left: 170px; 
   margin-right: 170px;
   padding: 20px;
   z-index: 1;
