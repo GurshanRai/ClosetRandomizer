@@ -1,11 +1,50 @@
 .imgs{
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 
 .imgsp{
   width: 100%;
   height: 300px;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 350px;
+  position:absolute;
+  top: 600px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:white;
+  padding: 0px;
+  z-index: 0;
+}
+
+.sidebar.left {
+  left: -50px; /* Corrected */
+}
+
+.sidebar.right {
+  right: -50px; /* Ensuring proper positioning */
+}
+
+/* Ensuring sidebar images are properly sized */
+.sidebar img {
+  width: 100%; /* Adjust width to fit sidebar */
+  height: auto;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* Adjusting main content to not overlap with sidebars */
+.main-content {
+  margin-left: 170px; /* Adjust based on sidebar width */
+  margin-right: 170px;
+  padding: 20px;
+  z-index: 1;
 }
 
 .model{
