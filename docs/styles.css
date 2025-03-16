@@ -3,6 +3,11 @@
   height: 200px;
 }
 
+.imgsp{
+  width: 100%;
+  height: 300px;
+}
+
 .model{
   max-height: 800px;
   max-width: 400px;

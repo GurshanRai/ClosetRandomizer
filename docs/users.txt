@@ -1,4 +1,4 @@
-gurshan,rai@123,exampleProfile.html
-isabella,purnadi@123,exampleProfile2.html
-isabel,bailey@123,exampleProfile3.html
-taylor,marks@123,exampleProfile4.html
+gurshan,rai@123,Gurshan.html
+isabel,bailey@123,Isabel.html
+isabella, purnadi@123, Isabella.html
+taylor,marks@123,Taylor.html
